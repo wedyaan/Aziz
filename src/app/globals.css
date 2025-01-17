@@ -25,3 +25,37 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.gradient-text {
+  background: linear-gradient(to right, #de5b3e, #2852d0);  
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+.gradient-background {
+  background: linear-gradient(to bottom right, #d4af37, #4a90e2);  
+}
+.imageSize{
+  width: 1000;
+  height:700;
+  /* border-radius:50% ; */
+}
+
+.arabic-list {
+  list-style-type: none; /* Remove default bullets */
+  padding-right: 0; /* Remove any default padding */
+  direction: rtl; /* Set direction to right-to-left */
+}
+
+.arabic-list li {
+  position: relative; /* Positioning for pseudo-element */
+  padding-right: 20px; /* Space for the bullet */
+}
+
+.arabic-list li::before {
+  content: '•'; /* Custom bullet */
+  position: absolute; /* Position it absolutely */
+  right: 0; /* Align to the right */
+  color: white; /* Change color if needed */
+}

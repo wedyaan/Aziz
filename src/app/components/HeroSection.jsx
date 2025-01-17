@@ -1,79 +1,110 @@
 "use client";
 import React from "react";
-import Image from "next/image";
-import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
+import Slider from "react-slick"; // Import the Slider component
+import Image from "next/image";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HeroSection = () => {
+  const { t, i18n } = useTranslation();
+
+   const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+  };
+
+   const slides = [
+    {
+      image: "/images/slider2.jfif",
+      title: t("hello i'm"),
+      description: t("Abdulaziz Bukhari"),
+    },
+    {
+      image: "/images/slider1.jfif",
+      title: t("Vision Statement"),
+      description: t("Vision Statement Description"),
+    },
+    {
+      image: "/images/pic5.jfif",
+      title: t("Mission Statement"),
+      description: t("Mission Statement Description"),
+    },
+  ];
+
+   const isArabic = i18n.language === "ar";
+
   return (
-    <section className="lg:py-16">
-      <div className="grid grid-cols-1 sm:grid-cols-12">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="col-span-8 place-self-center text-center sm:text-left justify-self-start"
-        >
-          <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-normal font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-secondary-600">
-              Hello, I&apos;m{" "}
-            </span>
-            <br></br>
-            <TypeAnimation
-              sequence={[
-                "Judy",
-                1000,
-                "Web Developer",
-                1000,
-                "Mobile Developer",
-                1000,
-                "UI/UX Designer",
-                1000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
-          </h1>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            voluptuous.
-          </p>
-          <div>
-            <Link
-              href="/#contact"
-              className="px-6 inline-block py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-200 text-white"
-            >
-              Hire Me
-            </Link>
-            <Link
-              href="/"
-              className="px-1 inline-block py-1 w-full sm:w-fit rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3"
-            >
-              <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
-                Download CV
-              </span>
-            </Link>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="col-span-4 place-self-center mt-4 lg:mt-0"
-        >
-          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
+    <section className="lg:py-16  ">
+      <Slider {...settings} className=" border-[#d9d9d9] rounded-full">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className="relative  h-[400px] sm:h-[550px] lg:h-[750px] bg-cover bg-center border-2 border-[#d4af37]"
+            style={{ backgroundImage: `url(${slide.image})` }}
+          >
             <Image
-              src="/images/hero-image.png"
-              alt="hero image"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              width={300}
-              height={300}
+              src={slide.image}
+              alt={slide.title}
+              layout="fill"
+              objectFit="cover"
             />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className={`absolute inset-0 flex items-center justify-start p-8 bg-black bg-opacity-50 ${
+                isArabic ? "text-right" : "text-left"
+              }`}
+              dir={isArabic ? "rtl" : "ltr"}  
+            >
+              <div className="text-white">
+                <h1
+                  style={{ color: "#66b2ff" }}  
+                  className="mb-4 text-4xl sm:text-5xl lg:text-7xl lg:leading-normal font-extrabold"
+                >
+                  {slide.title}
+                  {slide.subtitle && `, ${slide.subtitle}`}
+                  <br />
+                </h1>
+                <p
+                  className={`text-[#d9d9d9] ${
+                    index === 0
+                      ? "text-3xl sm:text-4xl lg:text-5xl"
+                      : "text-base sm:text-lg lg:text-xl"
+                  } mb-6 font-bold`}
+                >
+                  {slide.description}
+                </p>
+                <div>
+                  <Link
+                    href="/#contact"
+                    className="px-6 inline-block py-3 w-full sm:w-fit rounded-full mr-4 gradient-background hover:bg-slate-900 text-black "
+                  >
+                    {t("hireMe")}
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/in/abdulaziz-bukhari2/"
+                    target="_blank"
+                    className="px-1 m-3 inline-block py-1 w-full sm:w-fit rounded-full  hover:bg-slate-900 text-white mt-3"
+                  >
+                    <span className="block bg-[#003366]   rounded-full px-5 py-2">
+                      {t("linkedin")}
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
-      </div>
+        ))}
+      </Slider>
     </section>
   );
 };
