@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import React from "react";
 import youtube from "../../../public/icons8-youtube-48.png";
 import LinkedinIcon from "../../../public/linkedin-icon.svg"; // Make sure this is an SVG

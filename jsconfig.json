@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": ".", // This is important for path mapping to work
     "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+      "@/*": ["src/*"]
+    },
+    "jsx": "preserve", // If using React, this is often necessary
+    "target": "esnext", // or whatever target version you prefer
+    "module": "commonjs", // or "esnext" based on your needs
+    // other options...
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }
