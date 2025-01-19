@@ -1,6 +1,6 @@
 'use client';
 import React, { useTransition, useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 // import TabButton from "./TabButton";
 import { useTranslation } from "react-i18next";
 import Link from "next/link"; // Import Link from Next.js

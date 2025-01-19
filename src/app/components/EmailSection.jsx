@@ -3,7 +3,7 @@ import React from "react";
 import youtube from "../../../public/icons8-youtube-48.png";
 import LinkedinIcon from "../../../public/linkedin-icon.svg"; // Make sure this is an SVG
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import email from "../../../public/icons8-email-48.png";
 import whatsapp from "../../../public/icons8-whatsapp-48.png";
 import { useTranslation } from "react-i18next"; // Import translation hook

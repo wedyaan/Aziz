@@ -5,7 +5,7 @@ import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 import { useTranslation } from "react-i18next";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import logo from 'C:/Users/lenovo/Desktop/nextjs-portfolio/public/images/logo.png';  
 
 const Navbar = () => {

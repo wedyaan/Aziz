@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useTranslation } from "react-i18next"; // Import useTranslation hook
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link"; // Import Link for navigation
 
 const Footer = () => {

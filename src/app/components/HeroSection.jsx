@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import Slider from "react-slick"; // Import the Slider component
-import Image from "next/image";
+import Image from "next/legacy/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+ 
 
 const HeroSection = () => {
   const { t, i18n } = useTranslation();
@@ -26,6 +27,7 @@ const HeroSection = () => {
       image: "/images/slider2.jfif",
       title: t("hello i'm"),
       description: t("Abdulaziz Bukhari"),
+      
     },
     {
       image: "/images/slider1.jfif",
