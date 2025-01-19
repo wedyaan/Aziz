@@ -1,6 +1,6 @@
 // src/components/ProjectsSection.jsx
 
-"use client";
+// "use client";
 import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag"; // Ensure this component exists
